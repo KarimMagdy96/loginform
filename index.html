@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/stylee.css">
     <script src="js/bootstrap.bundle.js"></script>
-    <title>index</title>
+    <title>LogIn Form</title>
 </head>
 <body id="logIn">
 
@@ -19,8 +19,10 @@
             <input class=" form-control bg-light mb-3 p-2" id="valiedUserMail" type="email">
             <label for="valiedUserPassword" class="mb-2">PASSWORD</label>
             <input class=" form-control bg-light p-2" id="valiedUserPassword" type="password">
-            <button class=" p-2 mt-4 form-control btn btn-outline-primary" id="logInBtn">login</button>
+            <a  class=" p-2 mt-4 form-control btn btn-outline-primary" id="logInBtn">login</a>
+            <div class="d-none w-100 bg-danger p-3 text-white text-center mt-2" id="msg">Invalid username password </div>
             <div class="w-100 text-center mt-2">Don’t have an account? <a id="signupPage" href="registeruser.html">Sign In</a>
+                
             </div>
         </div>
     </div>

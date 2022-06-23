@@ -1,62 +1,3 @@
-// let loginUser = document.getElementById("loginUser");
-// let loginMail = document.getElementById("loginMail");
-// let loginPass = document.getElementById("loginPass");
-// let valiedUserMail=document.getElementById('valiedUserMail');
-// let valiedUserPassword=document.getElementById('valiedUserPassword');
-// let userInfo = [];
-// let loginbtn = document.getElementById("login");
-// let welcomepage = document.querySelector(".welcome");
-// let card = document.querySelector(".card");
-// let signUp = document.getElementById("signUP");
-// let signupPage = document.getElementById("signupPage");
-// let signinPage = document.getElementById("signinPage");
-// let registration = document.querySelector(".registration");
-
-// //REGESTRATION FORM .
-// if(signUp !=null){
-//   signUp.addEventListener("click", addUserData);
-//   function addUserData() {
-//     let user = {
-//       name: loginUser.value,
-//       password: loginPass.value,
-//       email: loginMail.value,
-//     };
-//     userInfo.push(user);
-//     localStorage.setItem("userbio", JSON.stringify(userInfo));
-
-//     // card.innerHTML=`welcome ${user.name}`;
-
-//     // console.log(`welcome ${user.name}`);
-//   }
-
-// }
-
-// //VALIDATE USER
-
-// loginbtn.addEventListener("click", validateuser);
-
-// function validateuser() {
-//   userInfo = JSON.parse(localStorage.getItem("userbio"));
-//   // welcomepage.classList.replace("d-none", "d-flex");
-//   for (let i = 0; i < userInfo.length; i++) {
-//     if (
-//       userInfo[i].email == valiedUserMail.value &&
-//       userInfo[i].password == valiedUserPassword.value
-//     ) {
-//       card.innerHTML = `welcome ${userInfo[i].name}`;
-//     } else {
-//       card.innerHTML = `Sorry ${userInfo[i].name}`;
-//     }
-//   }
-// }
-
-// // signupPage.addEventListener("click", function () {
-// //   registration.classList.replace("d-none", "d-flex");
-// // });
-// // signinPage.addEventListener("click", function () {
-// //   registration.classList.replace("d-flex", "d-none");
-// // });
-
 //registration inputs
 let loginUser = document.getElementById("loginUser");
 let loginMail = document.getElementById("loginMail");
@@ -69,6 +10,7 @@ let valiedUserPassword = document.getElementById("valiedUserPassword");
 let logInBtn = document.getElementById("logInBtn");
 
 //welcome page
+
 let welcomeCard = document.getElementById("welcomeCard");
 
 //Take User Data and Save It in Local Storage (for Registration form).
@@ -82,12 +24,14 @@ if (SignUpBtn != null) {
       password: loginPass.value,
       email: loginMail.value,
     };
+    //misisng if local storage not null add donot replace
     userinfo.push(user);
     localStorage.setItem("userbio", JSON.stringify(userinfo));
   }
 }
 
 //validate data from user for(login page)
+
 if (logInBtn != null) {
   logInBtn.addEventListener("click", validateuser);
   function validateuser() {
@@ -96,18 +40,28 @@ if (logInBtn != null) {
       if (
         userinfo[i].email == valiedUserMail.value &&
         userinfo[i].password == valiedUserPassword.value
+       
       ) {
-        // welcomeCard.innerHTML = `welcome ${userinfo[i].name}`;
-      
-        logInBtn.setAttribute("href","../welcomeuser.html")
-        function test(){
-          alert()
-        }
+        
         console.log("welcome");
+       let vuser= userinfo[i].name
+        localStorage.setItem('vuser',vuser)
+        logInBtn.setAttribute("href", "welcomeuser.html");
+        document.getElementById('msg').classList.replace('d-block','d-none');
       } else {
-        // welcomeCard.innerHTML = `Sorry ${userinfo[i].name}`;
-        console.log("sorry");
+        document.getElementById('msg').classList.replace('d-none','d-block');
       }
     }
   }
+}
+
+function displayWelcomeUser()
+{
+    document.getElementById("username").innerHTML = `welcome ${localStorage.vuser}`;
+
+}
+
+valiedUserMail.addEventListener('input',removednone)
+function removednone(){
+  document.getElementById('msg').classList.replace('d-block','d-none');
 }
